@@ -11,11 +11,11 @@ public class GameOfLife {
 	
 	//Constructors
 	public GameOfLife() {
-		this.setGrid(null);
+		setGrid(null);
 		setGridAsString("");
 	}
 	public GameOfLife(boolean[][] g) {
-		this.setGrid(g);
+		setGrid(g);
 		setGridAsString(GameOfLife.arrayToString(g));
 	}
 	
@@ -28,16 +28,24 @@ public class GameOfLife {
 		return grid;
 	}
 	/**
-	 * Setter for the board.
+	 * Setter for the board. Should be used with setGridAsString.
 	 * @param grid The new board as a 2d boolean array.
 	 */
-	public void setGrid(boolean[][] grid) {
+	private void setGrid(boolean[][] grid) {
 		this.grid = grid;
 	}
+	/**
+	 * Access for the board in the current state as a string.
+	 * @return The string representation of the board.
+	 */
 	public String getGridAsString() {
 		return gridAsString;
 	}
-	public void setGridAsString(String gridAsString) {
+	/**
+	 * Setter for the board as a string. Should be used with setGrid.
+	 * @param gridAsString The new board as a string.
+	 */
+	private void setGridAsString(String gridAsString) {
 		this.gridAsString = gridAsString;
 	}
 	/**
@@ -151,7 +159,7 @@ public class GameOfLife {
 		int rowNum = s.nextInt();
 		System.out.print("How many columns? ");
 		int colNum = s.nextInt();
-		System.out.println("Enter your board - 'o' is a live cell, '.' is a dead cell. Hit enter to start the next row.");
+		System.out.println("Enter your board in consecutive chars - 'o' is a live cell, '.' is a dead cell. Hit enter to start the next row.");
 		
 		String stringAsOfNow = "";
 		String rowString = null;
@@ -200,6 +208,9 @@ public class GameOfLife {
 	public static String arrayToString(boolean[][] g) {
 		String ans = "";
 		
+		if(g == null) {
+			return ans;
+		}
 		for (int i = 0; i < g.length; i++) {
 			for (int j = 0; j < g[0].length; j++) {
 				if (g[i][j]) {
@@ -216,7 +227,6 @@ public class GameOfLife {
 		return ans;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		@SuppressWarnings("resource")
 		Scanner s = new Scanner(System.in);
 		GameOfLife g = new GameOfLife();
@@ -224,6 +234,7 @@ public class GameOfLife {
 		g.initializeGrid();
 		
 		while (!done) {
+			System.out.println();
 			System.out.print("Type 'b' to create a new board, 'n' for the next state of the current board, or 'f' if you are finished:");
 			String response = s.nextLine();
 			if (response.toLowerCase().equals("b")) {
@@ -239,7 +250,4 @@ public class GameOfLife {
 		
 		
 	}
-	
-
-
 }
