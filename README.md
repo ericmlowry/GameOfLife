@@ -24,14 +24,14 @@ Game of Life:
 7. If the user is done, the program terminates.
 
 Additional features:
-"any number of rows and columns" demonstrating robustness 
-"new state of the board is now the new board" allowing the user to continue the game
+  "any number of rows and columns" demonstrating robustness 
+  "new state of the board is now the new board" allowing the user to continue the game
 
 Design:
-newStateCell sets booleans before the count to use conditionals to short circuit checks. This efficiently handles borders and corners and determines the next state for a single cell.
-setNewStateGrid uses newStateCell as a helper function and uses it's own code for making gridAsString to not have to use arrayToString and save a loop.
-setNewStateGrid probably shouldn't update the state and rather just return a 2d boolean array (for robustness) because it is doing too much. However in this case, allowing this made the program simpler.
-gridAsString exists so the string is saved rather than having to translate from the 2d boolean array everytime a function wants to show the user.
-initializeGrid was designed to guarantee a board from the user by the end of the function. stringAsOfNow is used to make it easier for the user to see the board they have developed. 
-arrayToString was used in initializeGrid because there wasn't a guarantee that the user dictated row was valid during the loop.
-stringToArray doesn't and shouldn't exist because gridAsString should be derivative of grid.
+  newStateCell sets booleans before the count to use conditionals to short circuit checks. This efficiently handles borders and corners and determines the next state for a single cell.
+  setNewStateGrid uses newStateCell as a helper function and uses it's own code for making gridAsString to not have to use arrayToString and save a loop.
+  setNewStateGrid probably shouldn't update the state and rather just return a 2d boolean array (for robustness) because it is doing too much. However in this case, allowing this made the program simpler.
+  gridAsString exists so the string is saved rather than having to translate from the 2d boolean array everytime a function wants to show the user.
+  initializeGrid was designed to guarantee a board from the user by the end of the function. stringAsOfNow is used to make it easier for the user to see the board they have developed. 
+  arrayToString was used in initializeGrid because there wasn't a guarantee that the user dictated row was valid during the loop.
+  stringToArray doesn't and shouldn't exist because gridAsString should be derivative of grid.
